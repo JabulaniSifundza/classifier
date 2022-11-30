@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
+import * as tf from '@tensorflow/tfjs-core';
+import '@tensorflow/tfjs-backend-cpu';
 import * as mobilenet from '@tensorflow-models/mobilenet';
 
 
@@ -31,7 +33,7 @@ function App() {
 	}
 
 	const uploadImage = (e)=>{
-		const { files } = e.target;
+		const {files} = e.target;
 		if(files.length > 0){
 			const url = URL.createObjectURL(files[0]);
 			setImgUrl(url)
@@ -68,6 +70,7 @@ function App() {
 	},[imgUrl])
 
 	if(modelLoading){
+		console.log("loading..")
 		return <h2>Model is loading...</h2>
 	}
 
@@ -75,7 +78,7 @@ function App() {
     <div className="App">
 		<h1 className="header">Image Classification</h1>
 		<div className="inputHolder">
-			<input type="file" accept="image/*" capture='camera' className="uploadInput" onChange={uploadImage()} ref={fileInputRef}/>
+			<input type="file" accept="image/*" capture='camera' className="uploadInput" onChange={uploadImage} ref={fileInputRef}/>
 			<button className="uploadImage" onClick={triggerUpload}></button>
 			<span className="or">OR</span>
 			<input type="text" placeholder="Paste an image URL" ref={textInputRef} onChange={handleOnChange}/>
