@@ -53,6 +53,7 @@ header{
 		display: inline-block;
 		border: 1px solid #ababab;
 		outline: none;
+		display: none;
 	}
 	
 	.uplaodInput{
@@ -66,6 +67,7 @@ header{
 		align-items: center;
 		display: inline-flex;
 		padding: 0 20px;
+		display: none;
 	}
 
 	.uploadImage{
@@ -118,6 +120,7 @@ header{
 		border: 1px solid #220164;
 		margin: 0 0 10px;
 		padding: 10px;
+		border-radius: 8px;
 
 		&:first-of-type{
 			border-color: #220164;
@@ -207,4 +210,9 @@ header{
 			}
 		}
 	}
+}
+
+.daLogo{
+	width: 200px;
+	height: 120px;
 }

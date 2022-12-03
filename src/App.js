@@ -3,6 +3,7 @@ import './App.css';
 import * as tf from '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-cpu';
 import * as mobilenet from '@tensorflow-models/mobilenet';
+import myLogo from './LogoRed.png';
 
 
 function App() {
@@ -76,7 +77,11 @@ function App() {
 
   return (
     <div className="App">
-		<h1 className="header">Image Classification</h1>
+		<div className="logoCont">
+			<img src={myLogo} alt="" className="daLogo"/>
+		</div>
+		<h1 className="header">Image Classification App</h1>
+		<p>Please make sure to click the Identify image button to identify the uploaded image. The model defaults to giving a random guess*</p>
 		<div className="inputHolder">
 			<input type="file" accept="image/*" capture='camera' className="uploadInput" onChange={uploadImage} ref={fileInputRef}/>
 			<button className="uploadImage" onClick={triggerUpload}></button>
@@ -97,7 +102,7 @@ function App() {
 							return (
 								<div className="result" key={result.className}>
 									<span className="name">{result.className}</span>
-									<span className="confidence">Confidence score:{(result.probability * 100).toFixed(2)}% {index === 0 && <span className="bestGuess">Best Guess</span>}</span>
+									<span className="confidence">Confidence score: {(result.probability * 100).toFixed(2)}% {index === 0 && <span className="bestGuess">Best Guess</span>}</span>
 								</div>
 							)
 						})
